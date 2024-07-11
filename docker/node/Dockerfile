@@ -8,13 +8,4 @@ WORKDIR /usr/src/csgofloat
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install
-
-# Bundle app source
-COPY . .
-
-EXPOSE 80
-EXPOSE 443
-VOLUME /config
-
-CMD [ "/bin/bash", "docker_start.sh" ]
+CMD [ "/bin/bash", "./docker/node/docker_start.sh" ]

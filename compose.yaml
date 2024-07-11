@@ -1,0 +1,19 @@
+services:
+  node:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/csgofloat
+    ports:
+      - "8081:80"
+    working_dir: /usr/src/csgofloat
+
+  database:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: csfloat-inspect
+      POSTGRES_PASSWORD: csfloat-inspect
+      POSTGRES_USER: csfloat-inspect
+    volumes:
+       - ./docker/db/data:/var/lib/postgresql/data:rw
